@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Mafia: Dead of Night</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="mafia game">
+  <meta name="author" content="Ayat Alkhatib">
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div id="narrator"></div>
+        <section id="opening" class="mafiagame">
+            <h1>Your Fate Is Being Calculated…</h1>
+            <h2>Welcome</h2>
+            <label for="name" class="playername">Name:</label>
+            <input type="text" id="name" name="name"><br><br>
+            <div class="buttonopening">
+                <button type ="button" class="joinbutton">Join</button>
+                <button type="button" class="createbutton">Create</button>
+            </div> 
+        </section>
+        <section id="join" class="mafiagame">
+            <h1>Choose the type of Game: Public or Private</h1>
+            <div class="buttonopening">
+                <button type="button" id="publicbutton">Public</button>
+                <button type="button" id="privatebutton">Private</button>
+            </div>
+            <!--If they click public-->
+            <section id="joinpublic" class="mafiagame">
+                <h1>They’re Waiting Inside</h1>
+                <div id="roomList"></div>
+            </section>
+            <section id="joinprivate" class="mafiagame">
+                <h2>Shape the Story, Choose the Chaos</h2>
+                <label for="roomcode">Reveal the Code of Entry</label>
+                <input type="text" id="roomcode" name="coderoom"><br><br>
+            </section>
+        </section>
+        <section id="create" class="mafiagame">
+            <h2>Create the Nightmare</h2>
+            <div class="player">
+                <label for="createcode" class="playername1">Generate Access Code</label>
+                <input type="text" id="createcode" name="codecreation"><br><br>
+            </div>
+            <h3>will it be private or public</h3>
+            <label for="publicgame" class="checkbox">
+            <input type="radio" id="publicgame" name="gameType" value="public">Public</label>
+            <label for="privatecgame" class="checkbox">
+            <input type="radio" id="privategame" name="gameType" value="private">Private</label>
+            
+            <label for="howmanyplayers" class="playername2">number of players</label>
+            <input type="text" id="howmanyplayers" name="numberofplayer"><br><br>
+        
+            <section id="storyline">
+                <h2>Choose a Storyline</h2>
+                <button type="button" id="harrypottergame">Harry Potter</button>
+                <!--If harry potter is the chosen storyline-->
+                <div id="harrypotterstoryline"></div>
+            </section>
+        </section>
+        <section id="createyourcharacter" class="mafiagame">
+            <a href="characters.html"></a>
+        </section>
+        <section id="waitingroom" class="mafiagame">
+            <h2>The crew’s not complete. more players are needed before the game begins.</h2>
+        </section>
+        <section id="showtime" class="mafiagame">
+            <h2>The job is on. Watch your back.</h2>
+            <h3>YOUR ROLE IS:</h3>
+        </section>
+        <section id="gametime" class="mafiagame">
+            <h2>Introduce yourself to the family — just your name, not your business.</h2>
+            <div id="chatboxes">
+                <form id="playerschatform">
+                    <input type="text" id="chat-input" placeholder="Type your message..." autocomplete="off" />
+                    <button type="submit">Send</button> 
+                </form>
+            </div>
+        </section>
+        <section id="showtimebegan" class="mafiagame">
+            <h2>The darkness has awakened. The game begins now…</h2>
+        </section>
+        <section id="gamestart" class="mafiagame">
+            <div id="mafiaround"></div>
+            <div id="mafiaroundcrown"></div>
+            <div id="doctor"></div>
+            <div id="police"></div>
+        </section>
+        <section id="voting" class="mafiagame">
+            <div id="showplayerselecteddeath"></div>
+            <div id="countdown"></div>
+            <div id="selectedmafia"></div>
+        </section>
+        <section id="gamecontinuing" class="mafiagame">
+            <!--The game should continue till there's less players-->
+        </section>
+        <section id="winners" class="mafiagame">
+            <div id="announcewinners"></div>
+            <button type="button" id="playagain">Play Again</button>
+            <button type="button" id="leave">Leave</button>
+        </section>
+<script src="assets/js/switchsec.js"></script>
+<script src="assets/js/button.js"></script>
+</body>
