@@ -21,19 +21,23 @@
         </section>
         <section id="join" class="mafiagame">
             <h1>Choose the type of Game: Public or Private</h1>
-            <div class="buttonopening">
+            <div class="buttonopeningtabs">
                 <button type="button" id="publicbutton">Public</button>
                 <button type="button" id="privatebutton">Private</button>
             </div>
             <!--If they click public-->
             <section id="joinpublic" class="mafiagame">
+                <div class="tab-public">
                 <h1>They’re Waiting Inside</h1>
                 <div id="roomList"></div>
+                </div>
             </section>
             <section id="joinprivate" class="mafiagame">
+                <div class="tab-private">
                 <h2>Shape the Story, Choose the Chaos</h2>
                 <label for="roomcode">Reveal the Code of Entry</label>
                 <input type="text" id="roomcode" name="coderoom"><br><br>
+            </div>
             </section>
         </section>
         <section id="create" class="mafiagame">
@@ -43,14 +47,20 @@
                 <input type="text" id="createcode" name="codecreation"><br><br>
             </div>
             <h3>will it be private or public</h3>
+            <div class="radiobuttons">
             <label for="publicgame" class="checkbox">
-            <input type="radio" id="publicgame" name="gameType" value="public">Public</label>
+            <input type="radio" id="publicgame" name="gameType" value="public">
+             <span class="custom-radio">Public</span>
+             </label>
             <label for="privatecgame" class="checkbox">
-            <input type="radio" id="privategame" name="gameType" value="private">Private</label>
-            
-            <label for="howmanyplayers" class="playername2">number of players</label>
-            <input type="text" id="howmanyplayers" name="numberofplayer"><br><br>
-        
+            <input type="radio" id="privategame" name="gameType" value="private">
+             <span class="custom-radio">Private</span>
+             </label>
+           </div>
+           <div class="playamount">
+            <label for="howmanyplayers" class="playername2">Number of players:</label>
+            <input type="text" id="howmanyplayers" name="numberofplayer">
+           </div>
             <section id="storyline">
                 <h2>Choose a Storyline</h2>
                 <button type="button" id="harrypottergame">Harry Potter</button>
