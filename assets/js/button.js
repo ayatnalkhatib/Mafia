@@ -18,3 +18,4 @@ document.addEventListener('DOMContentLoaded', () => { // waits till the html pag
         hidesection('joinprivate');
     });
 });
+
