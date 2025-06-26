@@ -19,3 +19,13 @@ document.addEventListener('DOMContentLoaded', () => { // waits till the html pag
     });
 });
 
+// create page
+
+document.addEventListener('DOMContentLoaded', function () {
+  const startBtn = document.getElementById('startGameBtn');
+  if (startBtn) {
+    startBtn.addEventListener('click', function () {
+      console.log('Game starting...');
+    });
+  }
+});

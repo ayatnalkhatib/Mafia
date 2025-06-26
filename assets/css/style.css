@@ -67,7 +67,7 @@ html {
     animation-fill-mode: both; /* this help to show the h2 after the h1 has been displayed */
     margin-top: 10px;
   }
-
+  /**
   label.playername {
     font-size: 60px;
     color:red;
@@ -81,7 +81,9 @@ html {
     margin-top: 10px;
   }
 
-  input[type="text"]{
+  
+
+  .username input[type="text"]{
     width:250px;
     height:50px;
     display: block;
@@ -96,11 +98,13 @@ html {
    
   }
 
+  **/
+
   .buttonopening{
     display: flex;
     align-items: center;
     justify-content: center;
-    gap:250px;
+    gap:50px;
 
   }
 
@@ -108,12 +112,12 @@ html {
     width:150px;
     height:50px;
     font-size: 25px;
-     animation-delay: 10s;
+     animation-delay: 8s;
     animation-duration: 2s;
     animation-name: fadeIn;
     animation-timing-function: ease-out;
     animation-fill-mode:both;
-    margin-top:10px;
+    margin-top:20px;
     
   }
 
@@ -134,7 +138,7 @@ html {
     text-align: center;
  }
 
- 
+ /*
  #publicbutton , #privatebutton  {
 
     width:150px;
@@ -153,15 +157,84 @@ html {
   background-color: red;
   color:white; 
   }
+  */ 
+
   
+.tabs-wrapper {
+    position: relative; /* this will hold all the tabs*/
+  }
+
+.tab-buttons { /*style for buttons*/
+    display: flex;
+    border-bottom: 2px solid #ccc;
+  }
+
+  /* Hide radio inputs */
+.tabs-wrapper input[type="radio"] {
+    display: none; /* since we don't want them as radio buttons but as labels this will help hiding it */ 
+  }
+
+  /* Tab labels  style */
+.tab-label {
+    padding: 10px 20px;
+    background: #eee;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+    margin-right: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+.tab-label:hover {
+    background: #ddd;
+  }
 
 
+
+  /* Active tab style */
+#tab1:checked ~ .tab-buttons label[for="tab1"], /* check is used to checking the elements we want, this only works on radio buttons */
+#tab2:checked ~ .tab-buttons label[for="tab2"] {
+    background: white;
+    font-weight: bold;
+    border-bottom: 1px solid white;
+  }
+
+  /* Tab content styles */
+.tab-contents {
+    border: 1px solid #ccc;
+    border-radius: 0 0 8px 8px;
+    padding: 20px;
+    background: #f9f9f9;
+  }
+
+.tab-content {
+    display: none;
+  }
+
+  /* Show the right content based on radio */
+#tab1:checked ~ .tab-contents #public {
+    display: block;
+  }
+
+#tab2:checked ~ .tab-contents #private {
+    display: block;
+  }
+
+
+#private h2{
+  color:red; 
+  font-size: 25px;
+}
+.usercode-label {
+  font-size:15px;
+}
 
 /* create page */
 
   #create h2{
     color:red;
-    font-size: 40px;
+    font-size: 60px;
     animation-duration: 3s;
     animation-name: fadeIn;
     animation-timing-function: ease-out; 
@@ -209,7 +282,7 @@ html {
     margin-top: 10px;
     font-size: 30px;
   }
-
+/*
   #publicgame , #privategame {
     width:150px;
     height:50px;
@@ -221,28 +294,33 @@ html {
     animation-fill-mode:both;
     margin-top:40px;
     margin-left: 40px;
-  }
+  }*/
 
   .checkbox input[type="radio"] {
-  scale:0.7;
+  transform: scale(2.5);
    vertical-align: middle; 
    margin: 0;
+   
 }
 
 .radiobuttons {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 50px;
+  margin-top: 30px;
+  margin-bottom:50px;
+  
   
 }
 
 .checkbox {
-  display: block;
+  display: flex;
+  align-items:center; 
   position: relative;
-  padding-left: 35px;
   margin-bottom: 12px;
   cursor: pointer;
   font-size: 22px;
+  gap: 20px;
 }
 
 label.checkbox{
@@ -254,6 +332,7 @@ label.checkbox{
     animation-name: fadeIn;
     animation-timing-function: ease-out;
     animation-fill-mode:both;
+    
 }
 
 
@@ -293,9 +372,9 @@ label.playername2 {
 }
 
 .playamount input[type="text"] {
-  width: 50px;
-  height: 50px;
-  font-size: 35px;
+  width: 70px;
+  height: 25px;
+  font-size: 17px;
   animation-delay: 7s;
   animation-duration: 2s;
   animation-name: fadeIn;
@@ -304,7 +383,7 @@ label.playername2 {
 }
 
 #storyline h2{
-      font-size: 30px;
+    font-size: 50px;
     color:red;
     display:block;
     text-align: center;
@@ -315,17 +394,92 @@ label.playername2 {
     animation-fill-mode:both;
     margin-top: 10px;
 }
-#harrypottergame{
-     width:150px;
-    height:50px;
-    font-size: 25px;
-     animation-delay: 10s;
+.storylinegame{
+  display: flex;
+  align-items:center; 
+  position: relative;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  gap: 20px;
+  margin-left:30px;
+  
+
+}
+
+.storylinegame input[type="radio"]{
+   transform: scale(1.5);
+   vertical-align: middle; 
+   margin: 0;
+}
+
+.storygames{
+  display: flex;
+  gap: 50px;
+  margin-top: 30px;
+  margin-bottom:50px;
+}
+
+label.storylinegame{
+  font-size: 30px;
+    color:red;
+    text-align: center;
+    animation-delay: 10s;
     animation-duration: 2s;
     animation-name: fadeIn;
     animation-timing-function: ease-out;
     animation-fill-mode:both;
-    margin-top:10px;
-     margin-left: 40px;
+    margin-top: 10px;
+}
+
+#createButton{
+  width:100px;
+    height:25px;
+    font-size: 15px;
+     animation-delay: 12s;
+    animation-duration: 2s;
+    animation-name: fadeIn;
+    animation-timing-function: ease-out;
+    animation-fill-mode:both;
+    margin-top: 10px;
+    margin-left: 40px;
+    margin-bottom: 20px;
 
 }
 
+/*lobby */ 
+
+#lobby h2{
+  color:white;
+  font-size:60px;
+  text-align: center;
+  margin-top:40px;
+}
+
+#lobby h3{
+ color:red;
+  font-size:30px;
+  text-align: center;
+  margin-top:40px;
+}
+
+#lobby h4{
+   color:white;
+  font-size:25px;
+  text-align: center;
+  margin-top:40px;
+}
+
+#startGameBtn{
+   width:150px;
+    height:50px;
+    font-size: 25px;
+    
+}
+
+.gamebutton{
+   display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}

@@ -12,8 +12,10 @@
         <section id="opening" class="mafiagame">
             <h1>Your Fate Is Being Calculated…</h1>
             <h2>Welcome</h2>
-            <label for="name" class="playername">Name:</label>
-            <input type="text" id="name" name="name"><br><br>
+           <!-- <div class="username">
+                <label for="name" class="playername">Name:</label>
+                <input type="text" id="name" name="name"><br><br>
+            </div> -->
             <div class="buttonopening">
                 <button type ="button" class="joinbutton">Join</button>
                 <button type="button" class="createbutton">Create</button>
@@ -21,58 +23,80 @@
         </section>
         <section id="join" class="mafiagame">
             <h1>Choose the type of Game: Public or Private</h1>
-            <div class="buttonopeningtabs">
-                <button type="button" id="publicbutton">Public</button>
-                <button type="button" id="privatebutton">Private</button>
-            </div>
-            <!--If they click public-->
-            <section id="joinpublic" class="mafiagame">
-                <div id = "tab-public" class="tab-game">
-                <h1>They’re Waiting Inside</h1>
-                <div id="roomList"></div>
+
+            <div class="tabs-wrapper">
+                <input type="radio" name="tabs" id="tab1" checked>
+                <input type="radio" name="tabs" id="tab2">
+
+                <div class="tab-buttons">
+                <label for="tab1" class="tab-label">Public</label>
+                <label for="tab2" class="tab-label">Private</label>
                 </div>
-            </section>
-            <section id="joinprivate" class="mafiagame">
-                <div id = "tab-public" class="tab-game">
-                <h2>Shape the Story, Choose the Chaos</h2>
-                <label for="roomcode">Reveal the Code of Entry</label>
-                <input type="text" id="roomcode" name="coderoom"><br><br>
+
+                <div class="tab-contents">
+                <div class="tab-content" id="public">
+                    <h2>Welcome to the Public Game</h2>
+                </div>
+                <div class="tab-content" id="private">
+                    <h2>Shape the Story, Choose the Chaos</h2>
+                    <div class="usercode">
+                        <label for="roomcode">Reveal the Code of Entry</label>
+                        <input type="text" id="roomcode" name="coderoom">
+                    </div>
+                </div>
+                </div>
             </div>
-            </section>
         </section>
+
         <section id="create" class="mafiagame">
             <h2>Create the Nightmare</h2>
+            <form  id="createform">
             <div class="player">
-                <label for="createcode" class="playername1">Generate Access Code</label>
-                <input type="text" id="createcode" name="codecreation"><br><br>
+                <label for="createcode" class="playername1"> Access Code</label>
+                <input type="text" id="createcode" name="codecreation" readonly><br><br>
             </div>
             <h3>will it be private or public</h3>
             <div class="radiobuttons">
-            <label for="publicgame" class="checkbox">
-            <input type="radio" id="publicgame" name="gameType" value="public">
-             <span class="custom-radio">Public</span>
-             </label>
-            <label for="privatecgame" class="checkbox">
-            <input type="radio" id="privategame" name="gameType" value="private">
-             <span class="custom-radio">Private</span>
-             </label>
+                <label for="publicgame" class="checkbox">
+                <input type="radio" id="publicgame" name="gameType" value="public">
+                <span class="custom-radio">Public</span>
+                </label>
+                <label for="privategame" class="checkbox">
+                <input type="radio" id="privategame" name="gameType" value="private">
+                <span class="custom-radio">Private</span>
+                </label>
            </div>
            <div class="playamount">
             <label for="howmanyplayers" class="playername2">Number of players:</label>
-            <input type="text" id="howmanyplayers" name="numberofplayer">
+            <input type="text" id="howmanyplayers" name="numberofplayer"  min="7" max="20">
            </div>
             <section id="storyline">
                 <h2>Choose a Storyline</h2>
-                <button type="button" id="harrypottergame">Harry Potter</button>
                 <!--If harry potter is the chosen storyline-->
-                <div id="harrypotterstoryline"></div>
+                <div class="storygames">
+                    <label for="harrypotterstory" class="storylinegame">
+                    <input type="radio" id="harrypotterstory" name="gameTypestory" value="harrypotterstoryline">
+                    <span class="custom-radio">Harry Potter</span>
+                    </label> 
+                </div>               
+                <div id="harrypottergame"></div>
+                <button type="submit" id="createButton">Create Game</button>
+
+            </form>
             </section>
         </section>
+        <!---
         <section id="createyourcharacter" class="mafiagame">
             <a href="characters.html"></a>
-        </section>
-        <section id="waitingroom" class="mafiagame">
-            <h2>The crew’s not complete. more players are needed before the game begins.</h2>
+        </section>-->
+        <section id="lobby" class="mafiagame hidden">
+            <h2>Waiting Room</h2>
+            <h3>Game Code: <span id="lobbyCode"></span></h3>
+            <h4>Players Joined:</h4>
+            <ul id="playerList"></ul>
+            <div class="gamebutton">
+                <button id="startGameBtn">Start Game</button>
+            </div>
         </section>
         <section id="showtime" class="mafiagame">
             <h2>The job is on. Watch your back.</h2>
