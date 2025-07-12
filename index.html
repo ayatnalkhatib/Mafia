@@ -85,18 +85,30 @@
             </form>
             </section>
         </section>
-        <!---
-        <section id="createyourcharacter" class="mafiagame">
-            <a href="characters.html"></a>
+       
+       <!-- <section id="theplayername" class="mafiagame hidden">
+            
+            <div class="username">
+                <h2>Your Username: </h2>
+                <input type="text" id="name" name="name"><br><br>
+            </div>
+            <h5>You May switch your UserName if you like!</h5>
         </section>-->
         <section id="lobby" class="mafiagame hidden">
-            <h2>Waiting Room</h2>
-            <h3>Game Code: <span id="lobbyCode"></span></h3>
-            <h4>Players Joined:</h4>
-            <ul id="playerList"></ul>
-            <div class="gamebutton">
-                <button id="startGameBtn">Start Game</button>
-            </div>
+            <form  id="createform">
+                <h2>Your Username: </h2>
+                        <div class="username"> 
+                            <input type="text" id="name" name="name"><br><br>
+                        </div>
+                        <h3>You May switch your UserName if you like!</h3>
+                    <h2>Waiting Room</h2>
+                    <h3>Game Code: <span id="lobbyCode"></span></h3>
+                    <h4>Players Joined:</h4>
+                    <ul id="playerList"></ul>
+                    <div class="gamebutton">
+                        <button id="startGameBtn">Start Game</button>
+                    </div>
+            </form>
         </section>
         <section id="showtime" class="mafiagame">
             <h2>The job is on. Watch your back.</h2>

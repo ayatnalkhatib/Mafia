@@ -483,3 +483,17 @@ label.storylinegame{
   align-items: center;
   margin-top: 20px;
 }
+
+#lobby input[type="text"] {
+  width:250px;
+  height:50px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px;
+  font-size: 35px;
+}
+
+#lobby h5{
+  color:red;
+  text-align: center;
+}

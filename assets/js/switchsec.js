@@ -31,6 +31,55 @@ function generateroomcode(length = 6) {
     return code; 
 }
 
+// generatename 
+function generatename(length = 10){
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'; 
+    const adjectives = ["Mystic", "Endeavor", "Candor", "Cogent", "Brood", "Comely", "Elegant", "Incognito", "Bucolic", "Cognizant", "Claggy", "Epitome", "Tectonic", "Delicacy", "Vicinal", "Boffola", "Nougat", "Rigorous", "Vortex", "Scrupulous", "Languish", "Elicit", "Whimsical", "Argute", "Vehement", "Fipple", "Ortanique", "Panacea", "Tranquility", "Galactic", "Ethereal", "Orectic", "Fankle", "Canorous", "Elixir", "Neon", "Glitter", "Petals", "Cherish", "Lavender", "Spirit", "Blossom", "Shine", "Fantasy", "Crew", "Breeze", "Lavish", "Peach", "Pear", "Velvet", "Gem", "Bliss", "Toffee", "Pearl", "Splash", "Cherub", "Maven", "Fern", "Venus", "Dew", "Diva", "Lime", "Titan", "Aurora", "Magma", "Optimal", "Tango", "Dazzle", "Mighty", "Stellar", "Bingo", "Everly", "Dulcet", "Palette", "Vintage", "Raw", "Lad", "Revive", "Musing", "Scintilla", "Opulent", "Squidgy", "Zenith", "Vista", "Rejoice", "Eva", "Dimple", "Soothe", "Alluring", "Armor", "Beatific", "Ignite", "Classic", "Blaze", "Jazz", "Amigo", "Nugget", "Dawn", "Twilight", "Flora", "Harmony", "Acme", "Blush", "Tinge", "Hue", "Crimson", "Bloom", "Crest", "Burgeon", "Aquiver", "Aesthetic", "Mellifluous", "Pavonine", "Nesh", "Luculent", "Effable", "Demure", "Rejoice", "Lissome", "Loquacious", "Petrichor", "Eloquence", "Cherish", "Languor", "Renaissance", "Elision", "Deasil", "Vivacious", "Epoch", "Limerence", "Stellar", "Kylie", "Ineffable", "Epiphany", "Pristine", "Radiant", "Sublime", "Brisk", "Vellichor", "Euphoria", "Agility", "Evanescent", "Symphony", "Alacrity", "Astonish", "Caprice", "Classy", "Ecstasy", "Tenacity", "Flowing", "Juvenescent", "Dazzling", "Efflorescence", "Feisty", "Kindred", "Jovial", "Hilarity", "Mellow", "Pacify", "Serendipity", "Phosphenes", "Quietude", "Ravel", "Quaint", "Cuddle", "Quadrivium", "Susurrous", "Piquancy", "Spellbound", "Saunter", "Ripple", "Gossamer", "Lagniappe", "Wafture", "Harbinger", "Lagoon", "Supine", "Lilt", "Scenic", "Wherewithal", "Sibilance", "Redolent", "Tender", "Moiety", "Cynosure", "Vestigial", "Offing", "Endearing", "Captivate", "Adorable", "Intrepid", "Audacious", "Lovable", "Spellbind", "Lovely", "Appealing", "Bonzer", "Delight", "Winsome", "Charm", "Valiant", "Enrapture", "Enchant", "Engross", "Dinky", "Bonny", "Tweet", "Supreme", "Comely", "Sunshine", "Pretty", "Beautify", "Adorn", "Embellish", "Smarten", "Prink", "Endear", "Alpha", "Success", "Intense", "Zen", "Angelic", "Epic", "Bright", "Gentle", "Avian", "Little", "Royal", "Aerial", "Cool", "Fresh", "Fantasy", "Real", "Terrific", "Superior", "Vivacious", "Tender", "Swaggy", "Magnificent", "Luminous", "Brilliant", "Stylish", "Ideal", "Ace", "Exemplary", "Utopian", "Glory", "Pleasing", "Astounding", "Superb", "Wondrous", "Lovely", "Bracing", "Winsome", "Ravish", "Frosty", "Scenic"];
+   // const number = Math.floor(Math.random()*100);
+    const randWord = adjectives[Math.floor(Math.random() * adjectives.length)];
+    const randSuffix = Array.from(
+    { length: 4 }, 
+    () => chars[Math.floor(Math.random() * chars.length)]
+  ).join('');
+    return randWord + randSuffix;
+
+}
+//saves the name a storage where able to be accesed 
+function saveName(name) {
+  localStorage.setItem('playerName', name);
+}
+
+// finds the name and gets the name 
+function loadName() {
+  const storedName = localStorage.getItem('playerName');
+
+  return storedName || generatename();
+}
+
+// sets the text box to be able to view as well to change name 
+
+function setupNameInput() {
+  const nameInput = document.getElementById('name');
+  if (!nameInput) return;
+
+  const playerName = loadName();
+  nameInput.value = playerName;
+
+// saves the new input if enetred by the user 
+  nameInput.addEventListener('input', () => {
+    saveName(nameInput.value);
+  });
+}
+// loads the page 
+document.addEventListener('DOMContentLoaded', () => {
+  setupNameInput();
+
+  const nameDisplay = document.getElementById('lobbyName');
+  if (nameDisplay) {
+    nameDisplay.textContent = loadName();
+  }
+});
+
 // Wait until DOM fully loads
 document.addEventListener('DOMContentLoaded', () => {
     // Add your button listeners for opening/joining game here if needed
