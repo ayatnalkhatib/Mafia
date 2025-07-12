@@ -134,3 +134,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// submit key for private session
+ const textbox = document.getElementById("roomcode");
+  textbox.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") { // Check if the Enter key is pressed
+      event.preventDefault(); // Prevent the default Enter key behavior (e.g., newline in a textarea)
+      document.getElementById("myForm").submit(); // Submit the form
+    }
+  });
