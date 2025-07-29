@@ -16,7 +16,9 @@ html {
     box-sizing: border-box;
 }
 
-
+.hidden{
+  display: none;
+}
 
 
 
@@ -105,13 +107,27 @@ html {
     align-items: center;
     justify-content: center;
     gap:50px;
+     
 
   }
 
   .joinbutton, .createbutton{
-    width:150px;
-    height:50px;
-    font-size: 25px;
+     width: 200px;
+    font-size: 16px;
+    font-weight: 600;
+    color: black;
+    cursor: pointer;
+    margin: 20px;
+    height: 55px;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+
+    border-radius: 50px;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
      animation-delay: 8s;
     animation-duration: 2s;
     animation-name: fadeIn;
@@ -131,9 +147,9 @@ html {
  #join h1{
    color:red;
     font-size: 40px;
-    animation-duration: 3s;
+   /* animation-duration: 3s;
     animation-name: fadeIn;
-    animation-timing-function: ease-out; 
+    animation-timing-function: ease-out; */
     margin-top: 30px;
     text-align: center;
  }
@@ -231,13 +247,41 @@ html {
 }
 
 /* create page */
+/*
 
+#create {
+  overflow: hidden;
+  position: relative;
+}
+.slider-wrapper {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+  }
+
+  .slider-container {
+    display: flex;
+    width: 300%;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .slide {
+    width: 100%;
+    flex-shrink: 0;
+    padding: 2rem;
+    border: 1px dashed #ccc;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+*/
   #create h2{
     color:red;
     font-size: 60px;
-    animation-duration: 3s;
+   /* animation-duration: 3s;
     animation-name: fadeIn;
-    animation-timing-function: ease-out; 
+    animation-timing-function: ease-out; */
     margin-top: 30px;
     text-align: center;
   }
@@ -247,11 +291,11 @@ html {
     color:red;
     display:block;
     text-align: center;
-    animation-delay: 3s;
+   /* animation-delay: 3s;
     animation-duration: 2s;
     animation-name: fadeIn;
     animation-timing-function: ease-out;
-    animation-fill-mode:both;
+    animation-fill-mode:both;*/
     margin-top: 10px;
   }
 
@@ -261,11 +305,11 @@ html {
     display: block;
     margin: 0 auto;
     margin-top: 10px;
-    animation-delay: 3s;
+   /* animation-delay: 3s;
     animation-duration: 2s;
     animation-name: fadeIn;
     animation-timing-function: ease-out;
-    animation-fill-mode:both;
+    animation-fill-mode:both;*/
     font-size: 35px;
    
   }
@@ -274,11 +318,11 @@ html {
   #create h3{
     color:white;
     text-align: center;
-    animation-duration: 5s;
+   /* animation-duration: 5s;
     animation-delay: 5s;
     animation-name: fadeIn;
     animation-timing-function: ease-out; 
-    animation-fill-mode: both; 
+    animation-fill-mode: both; */
     margin-top: 10px;
     font-size: 30px;
   }
@@ -327,11 +371,11 @@ label.checkbox{
   font-size: 30px;
     color:red;
     text-align: center;
-   animation-delay: 5s;
+ /*  animation-delay: 5s;
     animation-duration: 2s;
     animation-name: fadeIn;
     animation-timing-function: ease-out;
-    animation-fill-mode:both;
+    animation-fill-mode:both;*/
     
 }
 
@@ -341,11 +385,11 @@ label.playername2{
     color:red;
     display:block;
     margin-left: 40px;
-    animation-delay: 3s;
+  /*  animation-delay: 3s;
     animation-duration: 2s;
     animation-name: fadeIn;
     animation-timing-function: ease-out;
-    animation-fill-mode:both;
+    animation-fill-mode:both;*/
     margin-top: 10px;
 }
 .playamount {
@@ -353,21 +397,21 @@ label.playername2{
   align-items: center;
   gap: 15px; 
   margin-left: 40px; 
-  animation-delay: 7s;
+ /* animation-delay: 7s;
   animation-duration: 2s;
   animation-name: fadeIn;
   animation-timing-function: ease-out;
-  animation-fill-mode: both;
+  animation-fill-mode: both;*/
 }
 
 label.playername2 {
   font-size: 30px;
   color: red;
-  animation-delay: 7s;
+ /* animation-delay: 7s;
   animation-duration: 2s;
   animation-name: fadeIn;
   animation-timing-function: ease-out;
-  animation-fill-mode: both;
+  animation-fill-mode: both;*/
   margin: 0; 
 }
 
@@ -375,11 +419,11 @@ label.playername2 {
   width: 70px;
   height: 25px;
   font-size: 17px;
-  animation-delay: 7s;
+/*  animation-delay: 7s;
   animation-duration: 2s;
   animation-name: fadeIn;
   animation-timing-function: ease-out;
-  animation-fill-mode: both;
+  animation-fill-mode: both;*/
 }
 
 #storyline h2{
@@ -387,11 +431,11 @@ label.playername2 {
     color:red;
     display:block;
     text-align: center;
-    animation-delay: 10s;
+   /* animation-delay: 10s;
     animation-duration: 2s;
     animation-name: fadeIn;
     animation-timing-function: ease-out;
-    animation-fill-mode:both;
+    animation-fill-mode:both;*/
     margin-top: 10px;
 }
 .storylinegame{
@@ -424,11 +468,11 @@ label.storylinegame{
   font-size: 30px;
     color:red;
     text-align: center;
-    animation-delay: 10s;
+   /* animation-delay: 10s;
     animation-duration: 2s;
     animation-name: fadeIn;
     animation-timing-function: ease-out;
-    animation-fill-mode:both;
+    animation-fill-mode:both;*/
     margin-top: 10px;
 }
 
@@ -436,11 +480,11 @@ label.storylinegame{
   width:100px;
     height:25px;
     font-size: 15px;
-     animation-delay: 12s;
+  /*   animation-delay: 12s;
     animation-duration: 2s;
     animation-name: fadeIn;
     animation-timing-function: ease-out;
-    animation-fill-mode:both;
+    animation-fill-mode:both;*/
     margin-top: 10px;
     margin-left: 40px;
     margin-bottom: 20px;

@@ -7,6 +7,7 @@
   <meta name="author" content="Ayat Alkhatib">
   <link href="assets/css/style.css" rel="stylesheet">
 </head>
+
 <body>
     <div id="narrator"></div>
         <section id="opening" class="mafiagame">
@@ -43,7 +44,7 @@
                     <div class="usercode">
                         <label for="roomcode">Reveal the Code of Entry</label>
                         <input type="text" id="roomcode" name="coderoom">
-                        <button type="submit">Submit</button>
+                        <button type="submit" id="submitcode">Submit</button>
 
                     </form>
                 </div>
@@ -72,7 +73,7 @@
            </div>
            <div class="playamount">
             <label for="howmanyplayers" class="playername2">Number of players:</label>
-            <input type="text" id="howmanyplayers" name="numberofplayer"  min="7" max="20">
+            <input type="number" id="howmanyplayers" name="numberofplayer"  min="7" max="20">
            </div>
             <section id="storyline">
                 <h2>Choose a Storyline</h2>
@@ -100,12 +101,14 @@
         </section>-->
         <section id="lobby" class="mafiagame hidden">
             <form  id="createform">
-                <h2>Your Username: </h2>
+              <h2>Waiting Room</h2>
+                <h3>Your Username: </h3>
                         <div class="username"> 
                             <input type="text" id="name" name="name"><br><br>
                         </div>
-                        <h3>You May switch your UserName if you like!</h3>
-                    <h2>Waiting Room</h2>
+                        <h4>You May switch your UserName if you like!</h4>
+                    
+                    
                     <h3>Game Code: <span id="lobbyCode"></span></h3>
                     <h4>Players Joined:</h4>
                     <ul id="playerList"></ul>
@@ -116,7 +119,8 @@
         </section>
         <section id="showtime" class="mafiagame">
             <h2>The job is on. Watch your back.</h2>
-            <h3>YOUR ROLE IS:</h3>
+            <p>Your Role: <strong id="playerRole"></strong></p>
+            <p>Storyline: <span id="storylineDisplay"></span></p>
         </section>
         <section id="gametime" class="mafiagame">
             <h2>Introduce yourself to the family — just your name, not your business.</h2>

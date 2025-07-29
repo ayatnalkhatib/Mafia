@@ -78,67 +78,133 @@ document.addEventListener('DOMContentLoaded', () => {
   if (nameDisplay) {
     nameDisplay.textContent = loadName();
   }
-});
 
-// Wait until DOM fully loads
-document.addEventListener('DOMContentLoaded', () => {
-    // Add your button listeners for opening/joining game here if needed
+  // Handle the create game form submission
+  const form = document.getElementById('createform');
+  if (!form) {
+    console.error("Create form not found (id=createform)");
+    return;
+  }
 
-    // Handle the create game form submission
-    const form = document.getElementById('createform');
-    if (!form) {
-        console.error("Create form not found (id=createform)");
-        return;
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();  // Prevent page reload
+
+    // Grab values
+    const accessCode = document.getElementById('createcode')?.value.trim();
+    const gameType = document.querySelector('input[name="gameType"]:checked')?.value;
+    const playerInput = document.getElementById('howmanyplayers');
+    const numPlayers = parseInt(playerInput?.value, 10);
+    const storyline = document.querySelector('input[name="gameTypestory"]:checked')?.value;
+
+    // Validation
+    if (!gameType) {
+      alert("Please select Public or Private.");
+      return;
+    }
+    if (isNaN(numPlayers) || numPlayers < 7 || numPlayers > 20) {
+      alert("Please enter a number of players between 7 and 20.");
+      return;
+    }
+    if (!storyline) {
+      alert("Please choose a storyline.");
+      return;
     }
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();  // Prevent page reload
+    // Log or handle the game creation data
+    const gameData = {
+      accessCode,
+      gameType,
+      numPlayers,
+      storyline,
+    };
+    console.log("Game Created:", gameData);
 
-        // Grab values
-        const accessCode = document.getElementById('createcode')?.value.trim();
-        const gameType = document.querySelector('input[name="gameType"]:checked')?.value;
-        const playerInput = document.getElementById('howmanyplayers');
-        const numPlayers = parseInt(playerInput?.value, 10);
-        const storyline = document.querySelector('input[name="gameTypestory"]:checked')?.value;
-
-        // Validation
-        if (!gameType) {
-            alert("Please select Public or Private.");
-            return;
-        }
-        if (isNaN(numPlayers) || numPlayers < 7 || numPlayers > 20) {
-            alert("Please enter a number of players between 7 and 20.");
-            return;
-        }
-        if (!storyline) {
-            alert("Please choose a storyline.");
-            return;
-        }
-
-        // Log or handle the game creation data
-        const gameData = {
-            accessCode,
-            gameType,
-            numPlayers,
-            storyline,
-        };
-        console.log("Game Created:", gameData);
-
-        // Show the lobby and update access code display
-        const lobbyCode = document.getElementById('lobbyCode');
-        if (lobbyCode) {
-            lobbyCode.textContent = accessCode;
-        }
-
-        hidesection('lobby');
-    });
-});
-
-// submit key for private session
- const textbox = document.getElementById("roomcode");
-  textbox.addEventListener("keydown", function(event) {
-    if (event.key === "Enter") { // Check if the Enter key is pressed
-      event.preventDefault(); // Prevent the default Enter key behavior (e.g., newline in a textarea)
-      document.getElementById("myForm").submit(); // Submit the form
+    // Show the lobby and update access code display
+    const lobbyCode = document.getElementById('lobbyCode');
+    if (lobbyCode) {
+      lobbyCode.textContent = accessCode;
     }
+
+    hidesection('lobby');
   });
+
+  // Also move your Enter-key listener in here
+  const textbox = document.getElementById("roomcode");
+  if (textbox) {
+    textbox.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("myForm")?.submit();
+      }
+    });
+  }
+});
+
+
+
+
+// create page 
+document.addEventListener('DOMContentLoaded', () => {
+  const slider = document.querySelector('.slider-container');
+  let currentSlide = 0;
+
+  const updateSlide = () => {
+    slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+  };
+
+  document.getElementById('next1')?.addEventListener('click', () => {
+    currentSlide = 1;
+    updateSlide();
+  });
+
+  document.getElementById('next2')?.addEventListener('click', () => {
+    currentSlide = 2;
+    updateSlide();
+  });
+
+  document.getElementById('next3')?.addEventListener('click', () => {
+    // Go to next or finalize
+  });
+
+  document.getElementById('prev2')?.addEventListener('click', () => {
+    currentSlide = 0;
+    updateSlide();
+  });
+
+  document.getElementById('prev3')?.addEventListener('click', () => {
+    currentSlide = 1;
+    updateSlide();
+  });
+});
+
+
+  // start the game loading
+
+  
+function startGame (){
+  console.log("Get Ready to be betrayed... ")
+  const storyline = document.querySelector('input[name="gameTypestory"]:checked')?.value;
+
+
+  let role = [];
+
+  switch(storyline){
+    case 'harrypotterstoryline':
+      role = ['The Shadow', 'Healer', 'Guard', 'Wizard'];
+    break; 
+  }
+
+  const assignRole = roles[Math.floor(Math.random() * role.length)];
+
+  const playerrole = document.getElementById('playerRole');
+  if (playerrole) playerrole.textContent = assignRole;
+
+  const storyInfo = document.getElementById('storylineDisplay');
+  if (storyInfo) storyInfo.textContent = storyline;
+
+  hidesection('showtime');
+  
+  
+
+}
+
