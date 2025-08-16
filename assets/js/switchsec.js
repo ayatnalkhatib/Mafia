@@ -124,6 +124,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (lobbyCode) {
       lobbyCode.textContent = accessCode;
     }
+    const codeInputDiv = document.querySelector('.player');
+    if (codeInputDiv) {
+      codeInputDiv.style.display = 'none';
+    }
 
     hidesection('lobby');
   });
@@ -207,4 +211,10 @@ function startGame (){
   
 
 }
+
+
+
+
+
+
 
