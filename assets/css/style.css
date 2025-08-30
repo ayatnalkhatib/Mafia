@@ -368,3 +368,13 @@ html {
   color:red;
   text-align: center;
 }
+
+
+#showtime {
+  display: block;
+  visibility: visible ;
+  opacity: 1 ;
+  color: black ;
+  position: relative ;
+  z-index: 9999 ;
+}

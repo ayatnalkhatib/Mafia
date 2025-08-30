@@ -9,7 +9,10 @@ function hidesection(sectiongameid){ //function created
 
     const target = document.getElementById(sectiongameid); // targets the section we want 
     if(target){ // checks the sections that is being targeted 
+      target.classList.remove('hidden'); 
         target.style.display ='block'; // finds the section and displays it
+         target.style.setProperty('display','block','important');
+
         // this is for code generate 
         if (sectiongameid  === 'create'){
         const codegenerate = document.getElementById('createcode');
@@ -17,6 +20,10 @@ function hidesection(sectiongameid){ //function created
             codegenerate.value = generateroomcode();
     }
 }
+
+ target.style.zIndex = '9999';
+    target.style.position = 'relative';
+    target.scrollIntoView({behavior:'smooth', block:'start'});
     }
 }
 
@@ -138,51 +145,24 @@ document.addEventListener('DOMContentLoaded', () => {
     textbox.addEventListener("keydown", function (event) {
       if (event.key === "Enter") {
         event.preventDefault();
-        document.getElementById("myForm")?.submit();
+        document.getElementById("privateForm")?.submit();
       }
     });
   }
 });
 
+  
 
 
-
-// create page 
-document.addEventListener('DOMContentLoaded', () => {
-  const slider = document.querySelector('.slider-container');
-  let currentSlide = 0;
-
-  const updateSlide = () => {
-    slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-  };
-
-  document.getElementById('next1')?.addEventListener('click', () => {
-    currentSlide = 1;
-    updateSlide();
-  });
-
-  document.getElementById('next2')?.addEventListener('click', () => {
-    currentSlide = 2;
-    updateSlide();
-  });
-
-  document.getElementById('next3')?.addEventListener('click', () => {
-    // Go to next or finalize
-  });
-
-  document.getElementById('prev2')?.addEventListener('click', () => {
-    currentSlide = 0;
-    updateSlide();
-  });
-
-  document.getElementById('prev3')?.addEventListener('click', () => {
-    currentSlide = 1;
-    updateSlide();
-  });
-});
 
 
   // start the game loading
+
+  const startBtn = document.getElementById('startGameBtn');
+if (startBtn) {
+  startBtn.addEventListener('click', startGame);
+}
+
 
   
 function startGame (){
@@ -198,19 +178,22 @@ function startGame (){
     break; 
   }
 
-  const assignRole = roles[Math.floor(Math.random() * role.length)];
+  const assignRole = role[Math.floor(Math.random() * role.length)];
 
   const playerrole = document.getElementById('playerRole');
   if (playerrole) playerrole.textContent = assignRole;
 
   const storyInfo = document.getElementById('storylineDisplay');
   if (storyInfo) storyInfo.textContent = storyline;
+   const msg = document.getElementById('gameMessage');
+  if (msg) msg.textContent = "Get Ready to be betrayed...";
 
   hidesection('showtime');
   
   
 
 }
+
 
 
 
