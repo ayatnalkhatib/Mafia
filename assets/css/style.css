@@ -20,6 +20,10 @@ html {
   display: none;
 }
 
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
 
 
 /* for the js to work */
@@ -28,18 +32,25 @@ html {
   }
 
   #opening {
-    display: block;
+    height: 100vh;
     background-image: url(../img/mafiabg.jpg);
     background-size: cover;
     background-position: center;
-    height: 100vh;
-    animation: myAnim 6s ease-in-out infinite alternate;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
 
   }
 
-  body{
-    background-color: black;
-  }
+  body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+}
 
   /* Opening section */ 
 @keyframes myAnim {
@@ -51,16 +62,17 @@ html {
 		background-position: 50% 100%;
 	}
 }
-  @keyframes fadeIn { /* the use of @keyFrames is for animation purposes*/ 
-  from { /* how the animation will start off */ 
+  @keyframes fadeIn {  
+  from { 
     opacity: 0;
-    transform: translateY(-20px); /* makes it slide down a bit */
+    transform: translateY(-20px); 
   }
-  to { /* how the animation will end off */
+  to { 
     opacity: 1;
     transform: translateY(0);
   }
 }
+
 
 #opening h1{
     font-size: 100px;
@@ -173,6 +185,9 @@ html {
   transform: scale(1.05);
  } 
 
+
+
+
  /* this will be the join page */
 
  #join h1{
@@ -185,20 +200,18 @@ html {
 
   
 .tabs-wrapper {
-    position: relative; /* this will hold all the tabs*/
+    position: relative; 
   }
 
-.tab-buttons { /*style for buttons*/
+.tab-buttons { 
     display: flex;
     border-bottom: 2px solid #ccc;
   }
 
-  /* Hide radio inputs */
 .tabs-wrapper input[type="radio"] {
-    display: none; /* since we don't want them as radio buttons but as labels this will help hiding it */ 
+    display: none; 
   }
 
-  /* Tab labels  style */
 .tab-label {
     padding: 10px 20px;
     background: #eee;
@@ -216,15 +229,13 @@ html {
 
 
 
-  /* Active tab style */
-#tab1:checked ~ .tab-buttons label[for="tab1"], /* check is used to checking the elements we want, this only works on radio buttons */
+#tab1:checked ~ .tab-buttons label[for="tab1"], 
 #tab2:checked ~ .tab-buttons label[for="tab2"] {
     background: white;
     font-weight: bold;
     border-bottom: 1px solid white;
   }
 
-  /* Tab content styles */
 .tab-contents {
     border: 1px solid #ccc;
     border-radius: 0 0 8px 8px;
@@ -236,7 +247,6 @@ html {
     display: none;
   }
 
-  /* Show the right content based on radio */
 #tab1:checked ~ .tab-contents #public {
     display: block;
   }
@@ -254,77 +264,177 @@ html {
   font-size:15px;
 }
 
+
 /* create page */ 
 
+#create {
+   height: 100vh;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   overflow: hidden;
+   padding: 20px;
+   background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(0,0,0,1) 35%, rgba(156,45,45,1) 100%);
+}
+
 #create h2{
-  color:red;
   font-size: 60px;
   margin-top: 30px;
   text-align: center;
+  background: linear-gradient(
+      90deg,
+      rgb(255, 255, 255) 0%,
+      rgba(255, 0, 0, 0.9) 50%,
+      rgb(255, 255, 255) 100%
+    );
+
+    background-size: 200% auto;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 
 
 }
 
-#slide1 h3, #slide3 h3{
-  color:black;
-  font-size:35px;
-}
 
-.options{
-  display:flex;
- justify-content: center;    
- gap: 60px; 
- font-size:25px;   
- color:red;   
-
-
-}
-
-
-.slide {
-  background-color: white;
+#scene {
+  display: flex;
+  width: 900px;
+  height: 400px;
+  background: #fffdfd;
   border-radius: 15px;
-  padding: 40px 30px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-  margin: 40px auto;
-  max-width: 600px;
-  text-align: center;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  overflow: hidden;
+  margin: 0 auto;  
+  margin-top:40px;
 }
 
-.slide h3 {
-  color: red;
-  font-size: 28px;
-  margin-bottom: 20px;
+#left-zone {
+  width: 200px;
+  background: #ffffff;
+}
+
+.item:hover{
+  background-color: #8b0000;
+  color:white;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list .item {
+  margin: 0;
+}
+
+.list input[type="radio"] {
+  display: none;
+}
+
+.list label {
   display: block;
-}
-
-
-
-.slide input[type="number"]{
-  width:120px;
-  height:35px;
+  padding: 20px;
+  cursor: pointer;
+  transition: 0.3s;
   text-align: center;
-  margin-bottom: 10px;
-  font-size: 20px;
-  border-radius: 15px;
+}
+
+.list input[type="radio"]:checked + label {
+  background: linear-gradient(90deg, #ff2a2a, #8b0000);
+  color: white;
+}
+
+#middle-border {
+  width: 2px;
+  background: #555;
+}
+
+#right-zone {
+  flex-grow: 1;
+  background: #111;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: relative;
 }
 
 
-#slide2{
-  font-size: 25px;
-  color: red;
+
+#right-zone .content {
+  display: none;             
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 25px 20px;
+  margin: 15px 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
-#createButton{
-  width:200px;
-  height: 60px;
-  border-radius: 15px;
-  font-size: 20px;
+#slide1-radio:checked ~ #scene #right-zone .content1 {
+  display: flex;
+  
+}
+#slide2-radio:checked ~ #scene #right-zone .content2 {
+  display: flex;
+}
+#slide3-radio:checked ~ #scene #right-zone .content3 {
+  display: flex;
+}
+
+#slide1-radio,
+#slide2-radio,
+#slide3-radio {
+  display: none;
+ }
+
+
+
+#right-zone h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+#right-zone label {
+  display: block;
+  
+}
+
+
+
+#right-zone input[type="number"] {
+  padding: 8px;
+  border-radius: 5px red;
+  width: 80px;
+}
+
+#createButton {
+  width: 200px;
+  height: 55px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 18px;
+  margin-top: 50px;
+  background-color: #111;
+  color: white;
+  border: 2px solid #8b0000;
+  margin: 50px auto 0 auto;
   display:block;
-   margin: 0 auto 50px auto;
 }
 
+#createButton:hover {
+ background-color: #8b0000;
+  box-shadow: 10px 10px 40px rgba(255, 0, 0, 0.6);
+  transform: scale(1.05);
+}
+ 
 
 /*lobby */ 
 

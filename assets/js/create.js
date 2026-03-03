@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('createform');
+  const form = document.getElementById('createButton');
 
   if (!form) return;
 
@@ -61,3 +61,7 @@ function hidesection(sectionId) {
     target.style.display = 'block';
   }
 }
+
+
+// slide create
+

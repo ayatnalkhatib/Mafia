@@ -87,9 +87,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Handle the create game form submission
-  const form = document.getElementById('createform');
+  const form = document.getElementById('createButton');
   if (!form) {
-    console.error("Create form not found (id=createform)");
+    console.error("Create form not found (id=createButton)");
     return;
   }
 

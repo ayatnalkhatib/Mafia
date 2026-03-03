@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div id="narrator"></div>
+<div id="narrator"></div>
 
     <section id="opening" class="mafiagame">
         
@@ -50,41 +50,46 @@
         </div>
     </section>
 
-    <section id="create" class="mafiagame">
-        <h2>Create the Nightmare</h2>
-        <form id="createform">
-            <div class="slide" id="slide1"> 
-                <h3>Will it be private or public</h3>
-                <div class="options">
-                <label for="publicgame" class="checkbox">
-                    <input type="radio" id="publicgame" name="gameType" value="public">
-                    <span class="custom-radio">Public</span>
-                </label>
-                <label for="privategame" class="checkbox">
-                    <input type="radio" id="privategame" name="gameType" value="private">
-                    <span class="custom-radio">Private</span>
-                </label>
-            </div>
-           </div>
+  <section id="create" class="mafiagame">
+  <h2>Create the Nightmare</h2>
 
-           <div class="slide" id="slide2">
-               <label for="howmanyplayers" class="playername2">Number of players:</label>
-               <input type="number" id="howmanyplayers" name="numberofplayer" min="7" max="20">
-           </div>
+  <!-- Carousel Radios -->
+  <input type="radio" id="slide1-radio" name="carousel" checked>
+  <input type="radio" id="slide2-radio" name="carousel">
+  <input type="radio" id="slide3-radio" name="carousel">
 
-           <div class="slide" id="slide3">
-               <h3>Choose a Storyline</h3>
-               <div class="options">
-                   <label for="harrypotterstory" class="storylinegame">
-                       <input type="radio" id="harrypotterstory" name="gameTypestory" value="harrypotterstoryline">
-                       <span class="custom-radio">Harry Potter</span>
-                   </label> 
-               </div>
-               </div>               
-      
-           <button type="submit" id="createButton">Create Game</button>
-       </form>
-    </section>
+  <div id="scene">
+    <div id="left-zone">
+      <ul class="list">
+        <li class="item"><label for="slide1-radio">Private or Public</label></li>
+        <li class="item"><label for="slide2-radio">Number of Players</label></li>
+        <li class="item"><label for="slide3-radio">Choose Storyline</label></li>
+      </ul>
+    </div>
+
+    <div id="middle-border"></div>
+
+    <div id="right-zone">
+      <div class="content content1">
+        <h3>Will it be private or public?</h3>
+        <label><input type="radio" name="gameType" value="public"> Public</label>
+        <label><input type="radio" name="gameType" value="private"> Private</label>
+      </div>
+
+      <div class="content content2">
+        <h3>Number of Players:</h3>
+        <input type="number" min="7" max="20" id="howmanyplayers">
+      </div>
+
+      <div class="content content3">
+        <h3>Choose a Storyline:</h3>
+        <label><input type="radio" name="storyline" value="story1"> Harry Potter Storyline</label>
+      </div>
+    </div>
+  </div>
+
+  <button id="createButton">Create Game</button>
+</section>
 
     <section id="lobby" class="mafiagame hidden">
         <form id="lobbyForm">
@@ -155,7 +160,7 @@
         <button type="button" id="leave">Leave</button>
     </section>
 
-<script src="assets/js/switchsec.js"></script>
-<script src="assets/js/button.js"></script>
+<script src="assets/js/main.js"></script>
+
 </body>
 </html>
