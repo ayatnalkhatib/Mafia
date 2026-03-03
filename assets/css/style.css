@@ -29,6 +29,12 @@ html {
 
   #opening {
     display: block;
+    background-image: url(../img/mafiabg.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    animation: myAnim 6s ease-in-out infinite alternate;
+
   }
 
   body{
@@ -36,7 +42,15 @@ html {
   }
 
   /* Opening section */ 
+@keyframes myAnim {
+	0% {
+		background-position: 50% 0%;
+	}
 
+	100% {
+		background-position: 50% 100%;
+	}
+}
   @keyframes fadeIn { /* the use of @keyFrames is for animation purposes*/ 
   from { /* how the animation will start off */ 
     opacity: 0;
@@ -48,59 +62,76 @@ html {
   }
 }
 
-  #opening h1{
-    color:white;
+#opening h1{
     font-size: 100px;
     text-align: center;
-    animation-duration: 3s;
-    animation-name: fadeIn;
-    animation-timing-function: ease-out; /* when animation starts out fast so it slows it down */
-    margin-top: 30px;
+    margin: 30px 0 10px 0;
+
+    color: white;
+
+    background: linear-gradient(
+      90deg,
+      rgb(255, 255, 255) 0%,
+      rgba(255, 0, 0, 0.9) 50%,
+      rgb(255, 255, 255) 100%
+    );
+
+    background-size: 200% auto;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    animation: 
+      fadeIn 3s ease-out,
+      text-shimmer 4s linear infinite;
   }
 
-  #opening h2{
-    color:white;
+  @keyframes text-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+
+#opening h2{
     font-size:80px;
     text-align: center;
-    animation-duration: 3s;
-    animation-delay: 5s;
-    animation-name: fadeIn;
-    animation-timing-function: ease-out; 
-    animation-fill-mode: both; /* this help to show the h2 after the h1 has been displayed */
-    margin-top: 10px;
-  }
-  /**
-  label.playername {
-    font-size: 60px;
-    color:red;
-    display:block;
-    text-align: center;
-    animation-delay: 8s;
-    animation-duration: 2s;
-    animation-name: fadeIn;
-    animation-timing-function: ease-out;
-    animation-fill-mode:both;
-    margin-top: 10px;
   }
 
-  
+#opening h2 span {
+  display: inline-block;
+  margin: 0 12px;
+  color: #ff3b3b;
+  text-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+  opacity: 0;
+  transform: translateY(40px);
+  animation: wordReveal 2.5s ease-out forwards;
+}
 
-  .username input[type="text"]{
-    width:250px;
-    height:50px;
-    display: block;
-    margin: 0 auto;
-    margin-top: 10px;
-    animation-delay: 8s;
-    animation-duration: 2s;
-    animation-name: fadeIn;
-    animation-timing-function: ease-out;
-    animation-fill-mode:both;
-    font-size: 35px;
-   
+#opening h2 span:nth-child(1) {
+  animation-delay: 3s;
+}
+
+#opening h2 span:nth-child(2) {
+  animation-delay: 5s;
+}
+
+#opening h2 span:nth-child(3) {
+  animation-delay: 7s;
+}
+
+@keyframes wordReveal {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-  **/
+
 
   .buttonopening{
     display: flex;
@@ -108,38 +139,38 @@ html {
     justify-content: center;
     gap:50px;
      
-
   }
 
-  .joinbutton, .createbutton{
-     width: 200px;
-    font-size: 16px;
-    font-weight: 600;
-    color: black;
-    cursor: pointer;
-    margin: 20px;
-    height: 55px;
-    text-align:center;
-    border: none;
-    background-size: 300% 100%;
 
-    border-radius: 50px;
-    moz-transition: all .4s ease-in-out;
-    -o-transition: all .4s ease-in-out;
-    -webkit-transition: all .4s ease-in-out;
-    transition: all .4s ease-in-out;
-     animation-delay: 8s;
-    animation-duration: 2s;
-    animation-name: fadeIn;
-    animation-timing-function: ease-out;
-    animation-fill-mode:both;
-    margin-top:20px;
+
+
+.joinbutton, .createbutton{
+  width: 200px;
+  height: 55px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 18px;
+  margin-top: 50px;
+  background-color: #111;
+  color: white;
+  border: 2px solid #8b0000;
+  moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+  animation-delay: 9.2s;
+  animation-duration: 2s;
+  animation-name: fadeIn;
+  animation-timing-function: ease-out;
+  animation-fill-mode:both;
+  margin-top:20px;
     
   }
 
  .joinbutton:hover, .createbutton:hover {
-  background-color: red;
-  color:white; 
+  background-color: #8b0000;
+  box-shadow: 10px 10px 40px rgba(255, 0, 0, 0.6);
+  transform: scale(1.05);
  } 
 
  /* this will be the join page */
@@ -147,33 +178,10 @@ html {
  #join h1{
    color:red;
     font-size: 40px;
-   /* animation-duration: 3s;
-    animation-name: fadeIn;
-    animation-timing-function: ease-out; */
     margin-top: 30px;
     text-align: center;
  }
 
- /*
- #publicbutton , #privatebutton  {
-
-    width:150px;
-    height:50px;
-    font-size: 25px;
-    animation-delay: 3s;
-    animation-duration: 2s;
-    animation-name: fadeIn;
-    animation-timing-function: ease-out;
-    animation-fill-mode:both;
-    margin-top:40px;
-
- }
-
-#publicbutton:hover , #privatebutton:hover {
-  background-color: red;
-  color:white; 
-  }
-  */ 
 
   
 .tabs-wrapper {
