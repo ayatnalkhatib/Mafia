@@ -1,203 +1,83 @@
+// switchsec.js
+// Single responsibility: switching which .mafiagame section is visible,
+// plus the room-code generator used when the "create" section is shown.
 
+// Remembers whether the opening screen has already played its intro once.
+let openingShownOnce = false;
 
-function hidesection(sectiongameid){ //function created
-    
-    const sections = document.querySelectorAll('.mafiagame'); // we want to target the sections with the class of mafiagame
-    sections.forEach(sec => { // it goes through the sections
-        sec.style.display = 'none'; // hides the sections 
-    });
+function hidesection(sectiongameid) {
+  const sections = document.querySelectorAll('.mafiagame');
+  sections.forEach(sec => {
+    sec.style.display = 'none';
+  });
 
-    const target = document.getElementById(sectiongameid); // targets the section we want 
-    if(target){ // checks the sections that is being targeted 
-      target.classList.remove('hidden'); 
-        target.style.display ='block'; // finds the section and displays it
-         target.style.setProperty('display','block','important');
+  const target = document.getElementById(sectiongameid);
+  if (!target) return;
 
-        // this is for code generate 
-        if (sectiongameid  === 'create'){
-        const codegenerate = document.getElementById('createcode');
-        if (codegenerate){
-            codegenerate.value = generateroomcode();
+  target.classList.remove('hidden');
+
+  // First visit plays the full animated intro. Coming back via Back skips it,
+  // otherwise the Join / Create buttons stay invisible for ~9 seconds.
+  if (sectiongameid === 'opening') {
+    if (openingShownOnce) target.classList.add('returned');
+    openingShownOnce = true;
+  }
+  // Let the stylesheet decide the layout: the opening, join, create and lobby
+  // screens are flex-centred in CSS. Only fall back to block for sections
+  // that have no display rule of their own (showtime, gamestart, ...).
+  target.style.removeProperty('display');
+  if (getComputedStyle(target).display === 'none') {
+    target.style.display = 'block';
+  }
+
+  // Generate a fresh room code whenever the create section is shown
+  if (sectiongameid === 'create') {
+    const codegenerate = document.getElementById('createcode');
+    if (codegenerate) {
+      codegenerate.value = generateroomcode();
     }
-}
+  }
 
- target.style.zIndex = '9999';
-    target.style.position = 'relative';
-    target.scrollIntoView({behavior:'smooth', block:'start'});
-    }
+  target.style.zIndex = '9999';
+  target.style.position = 'relative';
+  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
-
-// gerateroomcode 
 
 function generateroomcode(length = 6) {
-    const char='ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-    let code = '';
-    for (let i = 0; i < length; i++){
-        code += char.charAt(Math.floor(Math.random() * char.length));
-    } 
-    return code; 
-}
-
-// generatename 
-function generatename(length = 10){
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'; 
-    const adjectives = ["Mystic", "Endeavor", "Candor", "Cogent", "Brood", "Comely", "Elegant", "Incognito", "Bucolic", "Cognizant", "Claggy", "Epitome", "Tectonic", "Delicacy", "Vicinal", "Boffola", "Nougat", "Rigorous", "Vortex", "Scrupulous", "Languish", "Elicit", "Whimsical", "Argute", "Vehement", "Fipple", "Ortanique", "Panacea", "Tranquility", "Galactic", "Ethereal", "Orectic", "Fankle", "Canorous", "Elixir", "Neon", "Glitter", "Petals", "Cherish", "Lavender", "Spirit", "Blossom", "Shine", "Fantasy", "Crew", "Breeze", "Lavish", "Peach", "Pear", "Velvet", "Gem", "Bliss", "Toffee", "Pearl", "Splash", "Cherub", "Maven", "Fern", "Venus", "Dew", "Diva", "Lime", "Titan", "Aurora", "Magma", "Optimal", "Tango", "Dazzle", "Mighty", "Stellar", "Bingo", "Everly", "Dulcet", "Palette", "Vintage", "Raw", "Lad", "Revive", "Musing", "Scintilla", "Opulent", "Squidgy", "Zenith", "Vista", "Rejoice", "Eva", "Dimple", "Soothe", "Alluring", "Armor", "Beatific", "Ignite", "Classic", "Blaze", "Jazz", "Amigo", "Nugget", "Dawn", "Twilight", "Flora", "Harmony", "Acme", "Blush", "Tinge", "Hue", "Crimson", "Bloom", "Crest", "Burgeon", "Aquiver", "Aesthetic", "Mellifluous", "Pavonine", "Nesh", "Luculent", "Effable", "Demure", "Rejoice", "Lissome", "Loquacious", "Petrichor", "Eloquence", "Cherish", "Languor", "Renaissance", "Elision", "Deasil", "Vivacious", "Epoch", "Limerence", "Stellar", "Kylie", "Ineffable", "Epiphany", "Pristine", "Radiant", "Sublime", "Brisk", "Vellichor", "Euphoria", "Agility", "Evanescent", "Symphony", "Alacrity", "Astonish", "Caprice", "Classy", "Ecstasy", "Tenacity", "Flowing", "Juvenescent", "Dazzling", "Efflorescence", "Feisty", "Kindred", "Jovial", "Hilarity", "Mellow", "Pacify", "Serendipity", "Phosphenes", "Quietude", "Ravel", "Quaint", "Cuddle", "Quadrivium", "Susurrous", "Piquancy", "Spellbound", "Saunter", "Ripple", "Gossamer", "Lagniappe", "Wafture", "Harbinger", "Lagoon", "Supine", "Lilt", "Scenic", "Wherewithal", "Sibilance", "Redolent", "Tender", "Moiety", "Cynosure", "Vestigial", "Offing", "Endearing", "Captivate", "Adorable", "Intrepid", "Audacious", "Lovable", "Spellbind", "Lovely", "Appealing", "Bonzer", "Delight", "Winsome", "Charm", "Valiant", "Enrapture", "Enchant", "Engross", "Dinky", "Bonny", "Tweet", "Supreme", "Comely", "Sunshine", "Pretty", "Beautify", "Adorn", "Embellish", "Smarten", "Prink", "Endear", "Alpha", "Success", "Intense", "Zen", "Angelic", "Epic", "Bright", "Gentle", "Avian", "Little", "Royal", "Aerial", "Cool", "Fresh", "Fantasy", "Real", "Terrific", "Superior", "Vivacious", "Tender", "Swaggy", "Magnificent", "Luminous", "Brilliant", "Stylish", "Ideal", "Ace", "Exemplary", "Utopian", "Glory", "Pleasing", "Astounding", "Superb", "Wondrous", "Lovely", "Bracing", "Winsome", "Ravish", "Frosty", "Scenic"];
-   // const number = Math.floor(Math.random()*100);
-    const randWord = adjectives[Math.floor(Math.random() * adjectives.length)];
-    const randSuffix = Array.from(
-    { length: 4 }, 
-    () => chars[Math.floor(Math.random() * chars.length)]
-  ).join('');
-    return randWord + randSuffix;
-
-}
-//saves the name a storage where able to be accesed 
-function saveName(name) {
-  localStorage.setItem('playerName', name);
-}
-
-// finds the name and gets the name 
-function loadName() {
-  const storedName = localStorage.getItem('playerName');
-
-  return storedName || generatename();
-}
-
-// sets the text box to be able to view as well to change name 
-
-function setupNameInput() {
-  const nameInput = document.getElementById('name');
-  if (!nameInput) return;
-
-  const playerName = loadName();
-  nameInput.value = playerName;
-
-// saves the new input if enetred by the user 
-  nameInput.addEventListener('input', () => {
-    saveName(nameInput.value);
-  });
-}
-// loads the page 
-document.addEventListener('DOMContentLoaded', () => {
-  setupNameInput();
-
-  const nameDisplay = document.getElementById('lobbyName');
-  if (nameDisplay) {
-    nameDisplay.textContent = loadName();
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+  let code = '';
+  for (let i = 0; i < length; i++) {
+    code += chars.charAt(Math.floor(Math.random() * chars.length));
   }
+  return code;
+}
 
-  // Handle the create game form submission
-  const form = document.getElementById('createButton');
-  if (!form) {
-    console.error("Create form not found (id=createButton)");
-    return;
-  }
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();  // Prevent page reload
+// ---------------------------------------------------------------
+// Navigation wiring (Join / Create / Back).
+// Lives here, in a plain script with no imports, so these buttons keep
+// working even if main.js or Firebase fails to load.
+// ---------------------------------------------------------------
+function wireNavigation() {
+  const joinBtn = document.querySelector('.joinbutton');
+  const createBtn = document.querySelector('.createbutton');
+  if (joinBtn) joinBtn.addEventListener('click', () => hidesection('join'));
+  if (createBtn) createBtn.addEventListener('click', () => hidesection('create'));
 
-    // Grab values
-    const accessCode = document.getElementById('createcode')?.value.trim();
-    const gameType = document.querySelector('input[name="gameType"]:checked')?.value;
-    const playerInput = document.getElementById('howmanyplayers');
-    const numPlayers = parseInt(playerInput?.value, 10);
-    const storyline = document.querySelector('input[name="gameTypestory"]:checked')?.value;
-
-    // Validation
-    if (!gameType) {
-      alert("Please select Public or Private.");
-      return;
-    }
-    if (isNaN(numPlayers) || numPlayers < 7 || numPlayers > 20) {
-      alert("Please enter a number of players between 7 and 20.");
-      return;
-    }
-    if (!storyline) {
-      alert("Please choose a storyline.");
-      return;
-    }
-
-    // Log or handle the game creation data
-    const gameData = {
-      accessCode,
-      gameType,
-      numPlayers,
-      storyline,
-    };
-    console.log("Game Created:", gameData);
-
-    // Show the lobby and update access code display
-    const lobbyCode = document.getElementById('lobbyCode');
-    if (lobbyCode) {
-      lobbyCode.textContent = accessCode;
-    }
-    const codeInputDiv = document.querySelector('.player');
-    if (codeInputDiv) {
-      codeInputDiv.style.display = 'none';
-    }
-
-    hidesection('lobby');
+  document.querySelectorAll('.backbutton').forEach((btn) => {
+    btn.addEventListener('click', () => hidesection('opening'));
   });
 
-  // Also move your Enter-key listener in here
-  const textbox = document.getElementById("roomcode");
-  if (textbox) {
-    textbox.addEventListener("keydown", function (event) {
-      if (event.key === "Enter") {
-        event.preventDefault();
-        document.getElementById("privateForm")?.submit();
-      }
-    });
-  }
-});
+  // Every screen is visible at page load (their CSS display rules beat
+  // .mafiagame {display:none}), which is why the Back buttons of Join and
+  // Create showed up on the main screen. Show only the opening screen.
+  hidesection('opening');
 
-  
-
-
-
-
-  // start the game loading
-
-  const startBtn = document.getElementById('startGameBtn');
-if (startBtn) {
-  startBtn.addEventListener('click', startGame);
+  console.log('switchsec.js loaded: navigation buttons are wired');
 }
 
-
-  
-function startGame (){
-  console.log("Get Ready to be betrayed... ")
-  const storyline = document.querySelector('input[name="gameTypestory"]:checked')?.value;
-
-
-  let role = [];
-
-  switch(storyline){
-    case 'harrypotterstoryline':
-      role = ['The Shadow', 'Healer', 'Guard', 'Wizard'];
-    break; 
-  }
-
-  const assignRole = role[Math.floor(Math.random() * role.length)];
-
-  const playerrole = document.getElementById('playerRole');
-  if (playerrole) playerrole.textContent = assignRole;
-
-  const storyInfo = document.getElementById('storylineDisplay');
-  if (storyInfo) storyInfo.textContent = storyline;
-   const msg = document.getElementById('gameMessage');
-  if (msg) msg.textContent = "Get Ready to be betrayed...";
-
-  hidesection('showtime');
-  
-  
-
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', wireNavigation);
+} else {
+  wireNavigation();
 }
-
-
-
-
-
-
-
-

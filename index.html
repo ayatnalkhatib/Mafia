@@ -22,6 +22,7 @@
     </section>
 
     <section id="join" class="mafiagame">
+        <button type="button" class="backbutton">&larr; Back</button>
         <h1>Choose the type of Game: Public or Private</h1>
         <div class="tabs-wrapper">
             <input type="radio" name="tabs" id="tab1" checked>
@@ -51,6 +52,7 @@
     </section>
 
   <section id="create" class="mafiagame">
+  <button type="button" class="backbutton">&larr; Back</button>
   <h2>Create the Nightmare</h2>
 
   <!-- Carousel Radios -->
@@ -91,31 +93,26 @@
   <button id="createButton">Create Game</button>
 </section>
 
-    <section id="lobby" class="mafiagame hidden">
-        <form id="lobbyForm">
-            <h2>Waiting Room</h2>
-            <h3>Your Username: </h3>
-            <div class="username"> 
-                <input type="text" id="name" name="name"><br><br>
-            </div>
-            <h4>You May switch your UserName if you like!</h4>
+<section id="lobby" class="mafiagame hidden">
+    <h1>Waiting Room</h1>
+    <div class="top-section">
+        <div class="username-box">
+            <h3>Your Username</h3>
+            <input type="text" id="name" name="name">
+            <h4>You may switch your username if you like!</h4>
+        </div>
+        
+        <div class="code-box">
+            <h3>Game Code</h3>
+            <input type="text" id="createcode" name="codecreation" readonly>
+        </div>
+    </div>
+    <h3 class="players-title">Players Joined:</h3>
+    <ul id="playerList"></ul>
+    <button id="startGameBtn" type="button">Start Game</button>
+</section>
 
-            <h3>Game Code: <span id="lobbyCode"></span></h3>
-            <div class="player">
-                <label for="createcode" class="playername1">Access Code</label>
-                <input type="text" id="createcode" name="codecreation" readonly><br><br>
-            </div>
-
-            <h4>Players Joined:</h4>
-            <ul id="playerList"></ul>
-
-            
-            <button id="startGameBtn" type="button">Start Game</button>
-            
-        </form>
-    </section>
-
-    <section id="showtime" class="mafiagame">
+<section id="showtime" class="mafiagame">
         <h2 id="storylineDisplay"></h2>
         <p id="gameMessage"></p>
 
@@ -160,7 +157,10 @@
         <button type="button" id="leave">Leave</button>
     </section>
 
-<script src="assets/js/main.js"></script>
+
+<script type="module" src="assets/js/main.js"></script>
+<script src="assets/js/switchsec.js"></script>
 
 </body>
 </html>
+
